@@ -16,6 +16,7 @@ RUN set -x \
 		liblua5.3-dev \
 		libpcre3-dev \
 		libssl-dev \
+		libsystemd-dev \
 		make \
 		wget \
 		zlib1g-dev \
@@ -28,7 +29,7 @@ RUN set -x \
 	&& rm haproxy.tar.gz \
 	\
 	&& makeOpts=' \
-		TARGET=linux2628 \
+		TARGET=linux2628 EXTRA_OBJS=contrib/prometheus-exporter/service-prometheus.o \
 		USE_LUA=1 LUA_INC=/usr/include/lua5.3 \
 		USE_GETADDRINFO=1 \
 		USE_OPENSSL=1 \
